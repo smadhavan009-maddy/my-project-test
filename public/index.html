@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkyHop Airways: Book a Flight (Demo)</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SkyHop Airways <span class="tag">DEMO</span></div>
+    <nav>
+      <button class="nav-btn active" data-nav="search">Book a flight</button>
+      <button class="nav-btn" data-nav="manage">Manage booking</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-search" class="view active">
+      <form id="search-form" class="card form-grid">
+        <label>From <select name="from" required></select></label>
+        <label>To <select name="to" required></select></label>
+        <label>Date <input type="date" name="date" required /></label>
+        <label>Passengers
+          <input type="number" name="passengers" min="1" max="9" value="1" required />
+        </label>
+        <label>Cabin
+          <select name="cabin">
+            <option value="economy">Economy</option>
+            <option value="business">Business</option>
+          </select>
+        </label>
+        <button type="submit" class="primary">Search flights</button>
+      </form>
+      <p id="search-error" class="error" hidden></p>
+      <div id="results"></div>
+    </section>
+
+    <section id="view-passengers" class="view">
+      <button class="link" data-nav="search">&larr; Back to results</button>
+      <div id="trip-summary" class="card"></div>
+      <form id="passenger-form" class="card">
+        <h2>Passenger details</h2>
+        <div id="passenger-fields" class="stack"></div>
+        <label>Contact email
+          <input type="email" name="contactEmail" required maxlength="120" />
+        </label>
+        <p id="booking-error" class="error" hidden></p>
+        <div class="actions">
+          <button type="submit" class="primary">Confirm booking</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="view-confirmation" class="view">
+      <div id="confirmation" class="card"></div>
+      <button class="primary" data-nav="search">Book another flight</button>
+    </section>
+
+    <section id="view-manage" class="view">
+      <form id="lookup-form" class="card form-grid">
+        <label>Booking reference (PNR)
+          <input name="pnr" required maxlength="6" pattern="[A-Za-z0-9]{6}" placeholder="e.g. K7M2QF" />
+        </label>
+        <button type="submit" class="primary">Find booking</button>
+      </form>
+      <p id="lookup-error" class="error" hidden></p>
+      <div id="booking-details"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
