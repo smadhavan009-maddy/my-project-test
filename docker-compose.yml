@@ -1,0 +1,8 @@
+services:
+  skyhop:
+    build: .
+    image: skyhop-airline:1.0
+    container_name: skyhop
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
